@@ -12,7 +12,9 @@ do
   then
     continue
   fi
-  mkdir "${bnp}"
+  if ! test -d "${bnp}" ; then
+    mkdir "${bnp}"
+  fi
   cd "${bnp}"
   for m in \
   $(curl -s -L "${p}" \
