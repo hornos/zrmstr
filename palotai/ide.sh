@@ -1,4 +1,7 @@
 #!/bin/bash
+#/// \file ide.sh
+#/// \brief Letölti az összes tutiságot Szt. Palotai oldaláról
+#
 URL="http://www.palotai.hu/mixek.html"
 PPT="playlist"
 for p in \

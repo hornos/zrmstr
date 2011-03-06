@@ -1,5 +1,7 @@
 #!/bin/bash
-
+#/// \file liszt.sh
+#/// \brief az OS X alaphangjainak beállítása
+#
 SOX=sox
 OPTS="-V3"
 
