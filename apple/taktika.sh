@@ -9,3 +9,6 @@ killall Finder
 echo "Dock"
 defaults write com.apple.dashboard mcx-disabled -boolean true
 killall Dock
+
+echo "SSH"
+launchctl unload /System/Library/LaunchAgents/org.openbsd.ssh-agent.plist
