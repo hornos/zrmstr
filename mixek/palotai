@@ -1,18 +1,22 @@
 #!/bin/bash
-#/// \file palotai.sh
-#/// \brief Letölti az összes tutiságot Szt. Palotai oldaláról
-#///
-#/// TODO: playlist dl as id3 message and cue
+function help/palotai() {
+  cat << EOF
+Warning iTunes tends to crash on large pls import.
+EOF
+  exit 1
+}
+
 url="http://www.palotai.hu/mixek.html"
 ppt="playlist"
 out="palotai.m3u"
 
 # args
-while getopts vu:p: opt; do
+while getopts vhu:p: opt; do
   case "$opt" in
     u) url=$OPTARG;;
     p) ppt=$OPTARG;;
     v) _v="-v";;
+    *|h) help/palotai;;
   esac
 done
 

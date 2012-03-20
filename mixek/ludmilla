@@ -1,0 +1,37 @@
+#!/bin/bash
+function help/ludmilla() {
+  cat << EOF
+Warning iTunes tends to crash on large pls import.
+EOF
+  exit 1
+}
+
+url="http://www.ludmilla.hu/letoltes.html"
+ppt="breakoutbreez"
+out="ludmilla.m3u"
+
+# args
+while getopts vhu:p: opt; do
+  case "$opt" in
+    u) url=$OPTARG;;
+    p) ppt=$OPTARG;;
+    v) _v="-v";;
+    *|h) help/ludmilla;;
+  esac
+done
+
+d=$(date)
+echo "# ${d}" > "${out}"
+for p in \
+$(wget -qO- "${url}" | \
+grep "${ppt}" | \
+grep "mp3" | \
+sed s/\<.*href=\"// | \
+sed s/\".*// | \
+sed s/.*http/http/ | \
+sed s/\\/ludmilla/\\/www.ludmilla/ | \
+grep http | \
+sed s/\ /_/g)
+do
+  echo $p
+done >> "${out}"
