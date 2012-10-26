@@ -24,7 +24,7 @@ done
 d=$(date)
 echo "# ${d}" > "${out}"
 for p in \
-$(wget -qO- "${url}" \
+$($_curl "${url}" \
 | grep "${ppt}" \
 | awk '{gsub(/^.*\('\''/,"");gsub(/'\''.*/,"");print}')
 do
