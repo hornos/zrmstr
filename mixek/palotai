@@ -9,7 +9,8 @@ EOF
 url="http://www.palotai.hu/mixek.html"
 ppt="playlist"
 out="palotai.m3u"
-
+_curl=curl
+#_curl="wget -qO-"
 # args
 while getopts vhu:p: opt; do
   case "$opt" in
@@ -33,7 +34,7 @@ do
   echo "Playlist: $p"
   bnp=$(basename "${p%%.html}")
   for m in \
-  $(wget -qO- "${p}" \
+  $($_curl "${p}" \
   | grep "\.mp3\|\.ogg" \
   | awk '{gsub(/.*href="/,"");gsub(/".*/,"");print}')
   do
