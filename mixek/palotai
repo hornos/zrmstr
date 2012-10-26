@@ -9,8 +9,8 @@ EOF
 url="http://www.palotai.hu/mixek.html"
 ppt="playlist"
 out="palotai.m3u"
-_curl=curl
-#_curl="wget -qO-"
+#_curl=curl
+_curl="wget -qO-"
 # args
 while getopts vhu:p: opt; do
   case "$opt" in
